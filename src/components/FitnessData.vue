@@ -1,6 +1,5 @@
 <template>
     <div>
-      <h1>Fitness Data</h1>
       <ul>
         <li v-for="data in FitnessData" :key="data.id">
           Profile Id: {{ data.profileId }}, Date: {{ data.date }}, Total Calories: {{ data.totalCalories }}, Calories Burned: {{ data.caloriesBurned }}

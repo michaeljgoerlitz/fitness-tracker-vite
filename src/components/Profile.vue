@@ -1,6 +1,5 @@
 <template>
     <div>
-      <h1>User Fitness Goals</h1>
       <ul>
         <li v-for="user in Profile" :key="user.id">
           Username: {{ user.username }}, Calorie Goal: {{ user.calorieGoal }}
@@ -8,7 +7,7 @@
           <button @click="deleteProfile(user.id)">Delete</button>
         </li>
       </ul>
-      <button @click="fetchProfile">Click me!</button>
+      <button @click="fetchProfile">Click me for profile data!</button>
     </div>
   </template>
   
