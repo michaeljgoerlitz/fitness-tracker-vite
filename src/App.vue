@@ -1,6 +1,7 @@
 <script setup>
 import HelloWorld from './components/HelloWorld.vue'
 import FitnessData from './components/FitnessData.vue'
+import AddFitnessData from './components/AddFitnessData.vue';
 </script>
 
 <template>
@@ -13,6 +14,7 @@ import FitnessData from './components/FitnessData.vue'
     </a>
   </div>
   <!-- <HelloWorld msg="Vite + Vue" /> -->
+  <AddFitnessData />
   <FitnessData />
 </template>
 
