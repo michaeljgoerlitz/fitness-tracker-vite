@@ -4,15 +4,23 @@
       <form @submit.prevent="submitForm">
         <div>
           <label for="id">ID:</label>
-          <input v-model="fitnessData.id" type="number" id="id" required>
+          <input v-model="FitnessData.id" type="number" id="id" required>
         </div>
         <div>
-          <label for="username">Username:</label>
-          <input v-model="fitnessData.username" type="text" id="username" required>
+          <label for="profileId">Profile ID:</label>
+          <input v-model="FitnessData.profileId" type="number" id="profileId" required>
         </div>
         <div>
-          <label for="calorieGoal">Calorie Goal:</label>
-          <input v-model="fitnessData.calorieGoal" type="number" id="calorieGoal" required>
+          <label for="date">Date:</label>
+          <input v-model="FitnessData.date" type="text" id="date" required>
+        </div>
+        <div>
+          <label for="totalCalories">Total Calories:</label>
+          <input v-model="FitnessData.totalCalories" type="number" id="totalCalories" required>
+        </div>
+        <div>
+          <label for="caloriesBurned">Calories Burned:</label>
+          <input v-model="FitnessData.caloriesBurned" type="number" id="caloriesBurned" required>
         </div>
         <button type="submit">Submit</button>
       </form>
@@ -26,16 +34,18 @@
     name: 'AddFitnessData',
     data() {
       return {
-        fitnessData: {
+        FitnessData: {
           id: 0,
-          username: '',
-          calorieGoal: '',
+          profileId: 0,
+          date: '',
+          totalCalories: '',
+          caloriesBurned: '',
         },
       };
     },
     methods: {
       submitForm() {
-        axios.post('http://localhost:8080/api/profiles', this.fitnessData)
+        axios.post('http://localhost:8080/api/fitness', this.FitnessData)
           .then(response => {
             console.log('Data submitted successfully', response.data);
             // Reset form after successful submission
@@ -46,9 +56,11 @@
           });
       },
       resetForm() {
-        this.fitnessData.id = 0;
-        this.fitnessData.username = '';
-        this.fitnessData.calorieGoal = '';
+        this.FitnessData.id = 0;
+        this.FitnessData.profileId = 0;
+        this.FitnessData.date = '';
+        this.FitnessData.totalCalories = '';
+        this.FitnessData.caloriesBurned = '';
       },
     },
   };

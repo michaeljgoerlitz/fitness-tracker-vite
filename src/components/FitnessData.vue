@@ -1,14 +1,14 @@
 <template>
     <div>
-      <h1>User Fitness Goals</h1>
+      <h1>Fitness Data</h1>
       <ul>
-        <li v-for="user in fitnessData" :key="user.id">
-          Username: {{ user.username }}, Calorie Goal: {{ user.calorieGoal }}
-          <!-- Add a button to delete this user -->
-          <button @click="deleteProfile(user.id)">Delete</button>
+        <li v-for="data in FitnessData" :key="data.id">
+          Profile Id: {{ data.profileId }}, Date: {{ data.date }}, Total Calories: {{ data.totalCalories }}, Calories Burned: {{ data.caloriesBurned }}
+          <!-- Add a button to delete this data -->
+          <button @click="deleteFitnessData(data.id)">Delete</button>
         </li>
       </ul>
-      <button @click="fetchFitnessData">Click me!</button>
+      <button @click="fetchFitnessData">Click me for fitness data!</button>
     </div>
   </template>
   
@@ -19,7 +19,7 @@
     name: 'FitnessData',
     data() {
       return {
-        fitnessData: [],
+        FitnessData: [],
       };
     },
     mounted() {
@@ -28,20 +28,20 @@
     methods: {
       async fetchFitnessData() {
         try {
-          const response = await axios.get('http://localhost:8080/api/profiles');
-          this.fitnessData = response.data;
+          const response = await axios.get('http://localhost:8080/api/fitness');
+          this.FitnessData = response.data;
         } catch (error) {
           console.error('Error fetching fitness data:', error);
         }
       },
-      async deleteProfile(id) {
+      async deleteFitnessData(id) {
         try {
-          await axios.delete(`http://localhost:8080/api/profiles/${id}`);
-          console.log(`Profile with id ${id} deleted.`);
+          await axios.delete(`http://localhost:8080/api/fitness/${id}`);
+          console.log(`fitness with id ${id} deleted.`);
           // Optionally, refresh the list after deletion
           this.fetchFitnessData();
         } catch (error) {
-          console.error('Error deleting profile:', error);
+          console.error('Error deleting fitness data:', error);
         }
       },
     },
@@ -51,5 +51,4 @@
   <style>
   /* Add any styles for your component here */
   </style>
-  
   
